@@ -11,7 +11,7 @@ The container images are available as multi-arch, currently supporting:
 - s390x (IBM Z)
 
 ## Using images
----
+
 Prerequisites are:
 - Container engine (e.g. docker or podman)
 
@@ -34,7 +34,6 @@ Start the interactive python shell
 Jupyter can then be accessed in browser.
 
 ## Build images
----
 
 Clone git repository
 
