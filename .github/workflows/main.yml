@@ -28,7 +28,7 @@ jobs:
       - name: Build and Push Image
         uses: docker/build-push-action@v3
         with:
-          dockerfile: ./dockerfiles/Dockerfile
+          context: ./dockerfiles
           tags: quay.io/mgiessing/qiskit:latest
           platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
           push: true
