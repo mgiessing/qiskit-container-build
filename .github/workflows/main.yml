@@ -1,15 +1,6 @@
 name: quay
     
-on:
-  workflow_dispatch
-  push:
-    branches:
-      - 'main'
-    tags:
-      - 'v*.*.*'
-  pull_request:
-    branches:
-      - 'main'
+on: [push, workflow_dispatch]
 
 jobs:
   docker:
