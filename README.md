@@ -61,3 +61,11 @@ make build-local
 #Jupyter image
 make build-local-jupyter
 ```
+
+### Build for armv7l (e.g. Raspberry Pi 32bit)
+
+For armv7l there is no up-to-date conda image, instead piwheels is used and therefore a different dockerfile/approach
+
+```bash
+make build-armv7l
+```

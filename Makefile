@@ -5,10 +5,10 @@ IMAGE=qiskit
 
 ROOT_IMAGE?=continuumio/miniconda3
 PYTHON_VERSION?=3.9
-QISKIT_VERSION?=0.41.1
+QISKIT_VERSION?=0.42.1
 
 
-PLATFORMS?=linux/amd64,linux/ppc64le,linux/s390x
+PLATFORMS?=linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
 
 build-base:
 	${DOCKER_CMD} --push \
@@ -41,3 +41,10 @@ build-local-jupyter: build-local
         -t ${REPO}/${IMAGE}:${QISKIT_VERSION}-jupyter \
         -f dockerfiles/Dockerfile.jupyter .
 
+#armv7l needs different setup
+build-arm7vl:
+	${DOCKER_CMD} --push \
+	--platform linux/arm/v7 \
+	--build-arg QISKIT_VERSION=${QISKIT_VERSION} \
+	-t ${REPO}/${IMAGE}:armv7l-${QISKIT_VERSION} \
+	-f dockerfiles/Dockerfile.armv7l .
