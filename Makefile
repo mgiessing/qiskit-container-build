@@ -46,5 +46,5 @@ build-arm7vl:
 	${DOCKER_CMD} --push \
 	--platform linux/arm/v7 \
 	--build-arg QISKIT_VERSION=${QISKIT_VERSION} \
-	-t ${REPO}/${IMAGE}:armv7l-${QISKIT_VERSION} \
+	-t ${REPO}/${IMAGE}:${QISKIT_VERSION}-armv7l \
 	-f dockerfiles/Dockerfile.armv7l .
