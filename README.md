@@ -18,7 +18,7 @@ Prerequisites are:
 ### Pure Python
 
 Start the interactive python shell
-`docker run -ti --rm quay.io/mgiessing/qiskit:0.41.1`
+`docker run -ti --rm --entrypoint /bin/bash quay.io/mgiessing/qiskit:0.41.1-jupyter`
 
 ```bash
 (base) root@c21e1f3cd2af:/# python
