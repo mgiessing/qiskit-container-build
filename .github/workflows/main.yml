@@ -33,4 +33,4 @@ jobs:
           platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
           push: true
           build-args: |
-            QISKIT_VERSION=0.42.0
+            QISKIT_VERSION=$(if [ "${{ github.ref }}" == "refs/heads/main" ]; then echo "latest"; fi)
