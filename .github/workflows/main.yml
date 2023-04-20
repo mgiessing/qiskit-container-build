@@ -37,7 +37,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./dockerfiles
-          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}
+          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}-jupyter
           platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
           push: true
           build-args: |
@@ -48,7 +48,7 @@ jobs:
         with:
           context: ./dockerfiles
           file: ./dockerfiles/Dockerfile.armv7l
-          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}-armv7l
+          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}-jupyter-armv7l
           platforms: linux/arm/v7
           push: true
           build-args: |
