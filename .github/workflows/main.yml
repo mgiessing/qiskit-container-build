@@ -37,8 +37,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./dockerfiles
-          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION }}
+          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || steps.tag.outputs.TAG_NAME }}
           platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
           push: true
           build-args: |
-            QISKIT_VERSION=${{ github.event.inputs.QISKIT_VERSION }}
+            QISKIT_VERSION=${{ github.event.inputs.QISKIT_VERSION || steps.tag.outputs.TAG_NAME }}
