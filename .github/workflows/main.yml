@@ -42,3 +42,13 @@ jobs:
           push: true
           build-args: |
             QISKIT_VERSION=${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}
+        
+      - name: Build and Push Image armv7l
+        uses: docker/build-push-action@v3
+        with:
+          context: ./dockerfiles/Dockerfile.armv7l
+          tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}-armv7l
+          platforms: linux/arm/v7
+          push: true
+          build-args: |
+            QISKIT_VERSION=${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}
