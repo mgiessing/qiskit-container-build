@@ -16,7 +16,7 @@ RUN conda install -n base -y \
     psutil \
     pyzmq \
     scipy \
-    scikit-learn 
+    scikit-learn \
     jupyterlab \
     ipywidgets && \
     conda clean --all --yes && \
