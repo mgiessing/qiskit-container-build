@@ -19,7 +19,7 @@ RUN apt update && apt install -y --no-install-recommends \
     curl && \
     apt clean all --yes
 
-RUN curl -o get_rustup.sh -s https://sh.rustup.rs && \
+RUN curl -v -o get_rustup.sh -s https://sh.rustup.rs && \
     sh ./get_rustup.sh -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
