@@ -18,4 +18,4 @@ RUN conda install -n base -y \
     scipy \
     scikit-learn && \
     conda clean --all --yes && \
-    pip3 install --no-cache qiskit['all']==${QISKIT_VERSION}
+    pip3 install --extra-index-url https://repo.fury.io/mgiessing --no-cache qiskit['all']==${QISKIT_VERSION}
