@@ -2,6 +2,10 @@ name: quay
     
 on:
   workflow_dispatch:
+    inputs:
+      QISKIT_VERSION:
+        description: 'The version used with qiskit'
+        required: true
   push:
     tags:
       - "*.*.*"
@@ -37,4 +41,4 @@ jobs:
           platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
           push: true
           build-args: |
-            QISKIT_VERSION=$(if [ "${{ github.ref }}" == "refs/heads/main" ]; then echo "latest"; fi)
+            QISKIT_VERSION=${{ github.event.inputs.QISKIT_VERSION }}
