@@ -47,7 +47,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./dockerfiles
-          file: Dockerfile.armv7l
+          file: ./dockerfiles/Dockerfile.armv7l
           tags: quay.io/mgiessing/qiskit:${{ github.event.inputs.QISKIT_VERSION || github.ref_name }}-armv7l
           platforms: linux/arm/v7
           push: true
