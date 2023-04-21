@@ -16,11 +16,12 @@ RUN apt update && apt install -y --no-install-recommends \
     libopenblas-base \
     libopenblas-dev \
     pybind11-dev \
-    curl && \
+    curl \
+    cargo && \
     apt clean all --yes
 
-RUN curl -o get_rustup.sh -s https://sh.rustup.rs && \
-    sh ./get_rustup.sh -y
+#RUN curl -o get_rustup.sh -s https://sh.rustup.rs && \
+#    sh ./get_rustup.sh -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 
