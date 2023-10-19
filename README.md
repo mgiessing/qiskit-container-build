@@ -8,7 +8,8 @@ Images are available on [quay.io](https://quay.io/mgiessing/qiskit)
 The container images are available as multi-arch, currently supporting:
 - x86_64 (Intel/AMD)
 - ppc64le (IBM PowerPC)
-- s390x (IBM Z)
+- aarch64 (arm/v8)
+- arm/v7l experimental
 
 ## Using images
 
