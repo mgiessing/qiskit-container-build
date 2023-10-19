@@ -1,11 +1,13 @@
-ARG ROOT_IMAGE=continuumio/miniconda3
+ARG ROOT_IMAGE=mambaorg/micromamba
 
 FROM ${ROOT_IMAGE}
 
-ARG PYTHON_VERSION=3.9
-ARG QISKIT_VERSION=latest
+ARG PYTHON_VERSION=3.10
+ARG QISKIT_VERSION=0.42.0
 
-RUN conda install -n base -y \
+RUN micromamba config append channels rocketce && \
+    micromamba config append channels defaults && \
+    micromamba install -n base -y \
     python=${PYTHON_VERSION} \
     cryptography \
     h5py \
@@ -16,13 +18,15 @@ RUN conda install -n base -y \
     psutil \
     pyzmq \
     scipy \
-    scikit-learn \
+    scikit-learn \ 
     jupyterlab \
     ipywidgets && \
-    conda clean --all --yes && \
-    pip3 install --extra-index-url https://repo.fury.io/mgiessing --no-cache qiskit['all']==${QISKIT_VERSION}
+    micromamba clean --all --yes
 
-ENV PATH=${PATH}:/opt/conda/bin
+ARG MAMBA_DOCKERFILE_ACTIVATE=1
+ENV PATH=${PATH}:/opt/conda/bin \
+    HOME=/home/mambauser
+RUN pip3 install --no-cache qiskit['all']==${QISKIT_VERSION} && \
+    mkdir -p /tmp/notebooks && chmod -R a+rwx /tmp/notebooks
 
-RUN mkdir -p /tmp/notebooks && chmod -R a+rwx /tmp/notebooks
 ENTRYPOINT ["sh", "-c", "jupyter lab --notebook-dir=/tmp/notebooks --no-browser --ip=0.0.0.0 --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.allow_origin='*'"]
