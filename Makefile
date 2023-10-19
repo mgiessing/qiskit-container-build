@@ -3,12 +3,12 @@ DOCKER_CMD?=docker buildx build #docker buildx
 REPO=quay.io/mgiessing
 IMAGE=qiskit
 
-ROOT_IMAGE?=continuumio/miniconda3
-PYTHON_VERSION?=3.9
-QISKIT_VERSION?=0.42.1
+ROOT_IMAGE?=mambaorg/micromamba
+PYTHON_VERSION?=3.10
+QISKIT_VERSION?=0.43.0
 
 
-PLATFORMS?=linux/amd64,linux/ppc64le,linux/s390x,linux/arm64
+PLATFORMS?=linux/amd64,linux/ppc64le,linux/arm64
 
 build-base:
 	${DOCKER_CMD} --push \
